@@ -7,17 +7,29 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class App {
+    static ArrayList<String> wordList = new ArrayList<>();
+    static ArrayList<Integer> wordLength = new ArrayList<>();
+    static ArrayList<Double> nums = new ArrayList<>();
     public static void main(String[] args) throws Exception {
-        ArrayList<String> wordList = new ArrayList<>();
-        ArrayList<Integer> wordLength = new ArrayList<>();
-        ArrayList<Double> nums = new ArrayList<>();
-        String tempValue = "";
-        String[] lineArr = new String[] {};
         Integer rowNum = 0;
         
-        System.out.println("Test reading of the csv file:");
+        //reading the input file
+        readTheFile();
+        rowNum = wordList.size();
         
-        //#region trying to read the file
+        //sorting numbers from least to greatest and outputting them
+        sortNumbers();
+
+        //sorting words based on word length (including spaces)
+        sortWords();
+        
+        //writing sorted contents to file
+        writeToTheFile(rowNum);
+    }
+
+    static void readTheFile() 
+    {
+        String[] lineArr = new String[] {};
         String l = "";
         Integer index = 0;
         try{
@@ -39,10 +51,12 @@ public class App {
             System.out.println("An error occurred while reading the file :(");
             e.printStackTrace();
         }
-        rowNum = wordList.size();
-        //#endregion
-
-        // #region sorting numbers from least to greatest and outputting them
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'readTheFile'");
+    }
+    
+    static void sortNumbers() 
+    {
         Collections.sort(nums);
 
         System.out.println("Sorted Numbers:");
@@ -50,9 +64,13 @@ public class App {
             System.out.println(nums.get(i));
         
         System.out.println("-----------------------\n");
-        // #endregion
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'sortNumbers'");
+    }
 
-        //#region sorting words based on number of characters per word (including spaces)
+    static void sortWords() 
+    {
+        String tempValue = "";
         System.out.println("Unsorted words:");
         for(String i : wordList)
             System.out.println(i);
@@ -84,9 +102,12 @@ public class App {
         System.out.println("\nSorted word lengths:");
         for(Integer i : wordLength)
             System.out.println(i);
-        //#endregion
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'sortWords'");
+    }
 
-        //#region writing sorted contents to file
+    static void writeToTheFile(Integer rowNum) 
+    {
         try{
             FileWriter writeFile = new FileWriter("Dela Rea-Output file.csv");
             writeFile.write("NUMBERS:, WORDS:, LENGTH:\n");
@@ -101,6 +122,7 @@ public class App {
             System.out.println("An error occurred while writing to the file :(");
             e.printStackTrace();
         }
-        //#endregion
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'writeToTheFile'");
     }
 }
