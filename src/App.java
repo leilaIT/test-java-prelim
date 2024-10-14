@@ -11,14 +11,15 @@ public class App {
     static ArrayList<Integer> wordLength = new ArrayList<>();
     static ArrayList<Double> nums = new ArrayList<>();
     public static void main(String[] args) throws Exception {
+        ArrayList<Double> tempNums = new ArrayList<>();
         Integer rowNum = 0;
         
         //reading the input file
-        readTheFile();
+        tempNums = readTheFile(tempNums);
         rowNum = wordList.size();
         
         //sorting numbers from least to greatest and outputting them
-        sortNumbers();
+        sortNumbers(tempNums);
 
         //sorting words based on word length (including spaces)
         sortWords();
@@ -27,7 +28,7 @@ public class App {
         writeToTheFile(rowNum);
     }
 
-    static void readTheFile() 
+    static ArrayList<Double> readTheFile(ArrayList<Double> tempNums) 
     {
         String[] lineArr = new String[] {};
         String l = "";
@@ -40,7 +41,7 @@ public class App {
                 l = sRead.nextLine();
                 lineArr = l.split(",");
                 
-                nums.add(Double.parseDouble(lineArr[0]));
+                tempNums.add(Double.parseDouble(lineArr[0]));
                 wordList.add(lineArr[1]);
 
                 index++;
@@ -51,21 +52,21 @@ public class App {
             System.out.println("An error occurred while reading the file :(");
             e.printStackTrace();
         }
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'readTheFile'");
+        return tempNums;
     }
     
-    static void sortNumbers() 
+    static void sortNumbers(ArrayList<Double> tempNums) 
     {
-        Collections.sort(nums);
+        Collections.sort(tempNums);
 
         System.out.println("Sorted Numbers:");
-        for(int i = nums.size() - 1; i > -1; i--)
-            System.out.println(nums.get(i));
+        for(int i = tempNums.size() - 1; i > -1; i--)
+        {
+            System.out.println(tempNums.get(i));
+            nums.add(tempNums.get(i));
+        }
         
         System.out.println("-----------------------\n");
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sortNumbers'");
     }
 
     static void sortWords() 
@@ -102,8 +103,6 @@ public class App {
         System.out.println("\nSorted word lengths:");
         for(Integer i : wordLength)
             System.out.println(i);
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sortWords'");
     }
 
     static void writeToTheFile(Integer rowNum) 
@@ -122,7 +121,5 @@ public class App {
             System.out.println("An error occurred while writing to the file :(");
             e.printStackTrace();
         }
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'writeToTheFile'");
     }
 }
