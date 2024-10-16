@@ -24,7 +24,7 @@ public class App {
         //sorting words based on word length (including spaces)
         sortWords();
         
-        //writing sorted contents to file
+        //writing sorted contents to output file
         writeToTheFile(rowNum);
     }
 
@@ -32,8 +32,8 @@ public class App {
     {
         String[] lineArr = new String[] {};
         String l = "";
-        Integer index = 0;
         try{
+            // File readFile = new File("Dela Rea-Input file.csv");
             File readFile = new File("Dela Rea-Input file.csv");
             Scanner sRead = new Scanner(readFile);
             while (sRead.hasNextLine())
@@ -43,8 +43,6 @@ public class App {
                 
                 tempNums.add(Double.parseDouble(lineArr[0]));
                 wordList.add(lineArr[1]);
-
-                index++;
             }
             sRead.close();
         } catch (FileNotFoundException e) 
@@ -87,8 +85,6 @@ public class App {
                     tempValue = wordList.get(j);
                     wordList.set(j, wordList.get(j + 1));
                     wordList.set(j + 1, tempValue);
-
-                    //create if statement for the scenario where 2 word lengths are the same, then sort alphabetically thru ASCII codes
                 }
             }
         }
